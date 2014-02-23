@@ -4,10 +4,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>TravisD Tech</title>
+  <title>Category: Ruby - TravisD Tech</title>
   <meta name="author" content="Travis Dahlke">
 
-  
+  <meta name="description" content="Category: Ruby">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.travis-d.me">
+  <link rel="canonical" href="http://www.travis-d.meblog/categories/ruby">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="TravisD Tech" type="application/atom+xml">
 
@@ -58,10 +58,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li >
                     <a href="/">Blog</a>
                 </li>
-                <li >
+                <li class="active">
                     <a href="/blog/archives">Archives</a>
                 </li>
             </ul>
@@ -92,16 +92,31 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <div class="blog-index">
+    <article role="article">
       
-      
-      
-        <article class="post">
+        <header class="page-header">
           
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
+          
+            <h1 class="entry-title">
+              Category: Ruby
+              
+            </h1>
+          
+        </header>
+      
+      <div class="entry-content">
+        <div id="blog-archives" class="category">
+
+
+
+  
+  <h2>2013</h2>
+
+<article class="page-header">
+  
+<h1><a href="/blog/2013/11/07/shadowing-gotchas/">Shadowing Gotchas</a></h1>
+<p class="meta text-muted">
+  
 
 
 
@@ -115,77 +130,26 @@
 
 
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-07T09:00:00-06:00" pubdate data-updated="true">Nov 7<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/07/shadowing-gotchas/">Shadowing Gotchas</a></h1>
-    
-  </header>
+  
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
 
 
-  <div class="entry-content clearfix"><p><em>Crossposted from <a href="http://www.codinginthecrease.com/news_article/show/307337">Coding in the Crease</a></em></p>
+</p>
 
-<p>Recently, while working on one of those <em>&ldquo;WHY ISN&rsquo;T THIS WORKING?!&rdquo;</em> bugs, I stumbled on what I believe is a little understood fact about Ruby variable scoping.</p>
+</article>
 
-<p>The code went something like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span> <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">foo</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span> <span class="k">if</span> <span class="n">foo</span><span class="o">.</span><span class="n">nil?</span>
-</span><span class='line'><span class="n">foo</span> <span class="c1"># =&gt; nil</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>How is this possible you ask? It turns out that in Ruby, <strong>local variables are determined to be in scope at parse time, not at runtime</strong>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">defined?</span> <span class="n">foo</span> <span class="c1"># =&gt; nil</span>
-</span><span class='line'><span class="n">foo</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span> <span class="k">if</span> <span class="kp">false</span>
-</span><span class='line'><span class="n">defined?</span> <span class="n">foo</span> <span class="c1"># =&gt; &quot;local-variable&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Without an explicit receiver or arguments, Ruby will always attempt to dereference the local variable if it is in scope.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">foo</span> <span class="c1"># =&gt; nil</span>
-</span><span class='line'><span class="nb">self</span><span class="o">.</span><span class="n">foo</span> <span class="c1"># =&gt; &quot;foo&quot;</span>
-</span><span class='line'><span class="n">foo</span><span class="p">()</span> <span class="c1"># =&gt; &quot;foo&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>To avoid this problem in practice, you should avoid shadowing method names with local variables in all but the simplest of cases. We actually had this guideline in our <a href="http://sportngin.github.io/styleguide/ruby.html#syntax_L20">styleguide</a>.</p>
-
-<p><img src="http://aiminglow.com/wp-content/uploads/2011/06/peter-pan.jpg" alt="" /></p>
-
-<p>When writing or reviewing code, be on the lookout for shadows. You never know when they&rsquo;ll sneak up on you.</p>
 </div>
-  
-  
 
-
-        </article>
+      </div>
       
-    </div>
-
-    <ul class="pager">
-      
-        <li class="previous disabled"><a href="#">&larr;&nbsp;Older</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-        <li class="next disabled"><a href="#">Newer&nbsp;&rarr;</a></li>
-      
-    </ul>
+    </article>
+    
   </div>
 
   
@@ -208,7 +172,7 @@
       <h3 class="panel-title">GitHub Repos</h3>
   </div>
   <div class="list-group" id="gh_repos">
-    <p class="loading">Status updating&#8230;</p>
+    <p class="loading">Status updating...</p>
   </div>
   
     <div class="gh-profile-link pull-right text-muted">

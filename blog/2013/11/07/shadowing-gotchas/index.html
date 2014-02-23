@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>TravisD Tech</title>
+  <title>Shadowing Gotchas - TravisD Tech</title>
   <meta name="author" content="Travis Dahlke">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.travis-d.me">
+  <link rel="canonical" href="http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="TravisD Tech" type="application/atom+xml">
 
@@ -92,12 +92,8 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <div class="blog-index">
+    <article class="hentry" role="article">
       
-      
-      
-        <article class="post">
-          
   <header class="page-header">
     
       <p class="meta text-muted text-uppercase">
@@ -119,12 +115,15 @@
       </p>
     
     
-      <h1 class="entry-title"><a href="/blog/2013/11/07/shadowing-gotchas/">Shadowing Gotchas</a></h1>
+    <h1 class="entry-title">
+        Shadowing Gotchas
+        
+    </h1>
     
   </header>
 
 
-  <div class="entry-content clearfix"><p><em>Crossposted from <a href="http://www.codinginthecrease.com/news_article/show/307337">Coding in the Crease</a></em></p>
+<div class="entry-content clearfix"><p><em>Crossposted from <a href="http://www.codinginthecrease.com/news_article/show/307337">Coding in the Crease</a></em></p>
 
 <p>Recently, while working on one of those <em>&ldquo;WHY ISN&rsquo;T THIS WORKING?!&rdquo;</em> bugs, I stumbled on what I believe is a little understood fact about Ruby variable scoping.</p>
 
@@ -169,36 +168,73 @@
 
 <p>When writing or reviewing code, be on the lookout for shadows. You never know when they&rsquo;ll sneak up on you.</p>
 </div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">Travis Dahlke</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-07T09:00:00-06:00" pubdate data-updated="true">Nov 7<span>th</span>, 2013</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas/" data-via="t_dahlke" data-counturl="http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas/" >Tweet</a>
   
   
+  
+</div>
 
-
-        </article>
-      
-    </div>
-
-    <ul class="pager">
-      
-        <li class="previous disabled"><a href="#">&larr;&nbsp;Older</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-        <li class="next disabled"><a href="#">Newer&nbsp;&rarr;</a></li>
-      
-    </ul>
+        
+        
+      </footer>
+    </article>
+    
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+    
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/blog/2013/11/07/shadowing-gotchas/">Shadowing Gotchas</a>
+    <a class="list-group-item active" href="/blog/2013/11/07/shadowing-gotchas/">Shadowing Gotchas</a>
     
   </div>
 </section>
@@ -208,7 +244,7 @@
       <h3 class="panel-title">GitHub Repos</h3>
   </div>
   <div class="list-group" id="gh_repos">
-    <p class="loading">Status updating&#8230;</p>
+    <p class="loading">Status updating...</p>
   </div>
   
     <div class="gh-profile-link pull-right text-muted">
@@ -241,8 +277,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 
@@ -268,7 +304,10 @@
       var disqus_shortname = 'travisdahlke';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas/';
+        var disqus_url = 'http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

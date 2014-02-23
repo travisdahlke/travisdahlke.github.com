@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | TravisD Tech]]></title>
+  <link href="http://www.travis-d.me/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://www.travis-d.me/"/>
+  <updated>2014-02-23T09:34:28-06:00</updated>
+  <id>http://www.travis-d.me/</id>
+  <author>
+    <name><![CDATA[Travis Dahlke]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Shadowing Gotchas]]></title>
+    <link href="http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas/"/>
+    <updated>2013-11-07T09:00:00-06:00</updated>
+    <id>http://www.travis-d.me/blog/2013/11/07/shadowing-gotchas</id>
+    <content type="html"><![CDATA[<p><em>Crossposted from <a href="http://www.codinginthecrease.com/news_article/show/307337">Coding in the Crease</a></em></p>
+
+<p>Recently, while working on one of those <em>&ldquo;WHY ISN&rsquo;T THIS WORKING?!&rdquo;</em> bugs, I stumbled on what I believe is a little understood fact about Ruby variable scoping.</p>
+
+<p>The code went something like this:</p>
+
+<p>```ruby
+def foo; &ldquo;foo&rdquo;; end</p>
+
+<p>foo = &ldquo;bar&rdquo; if foo.nil?
+foo # => nil
+```</p>
+
+<p>How is this possible you ask? It turns out that in Ruby, <strong>local variables are determined to be in scope at parse time, not at runtime</strong>.</p>
+
+<p><code>ruby
+defined? foo # =&gt; nil
+foo = "foo" if false
+defined? foo # =&gt; "local-variable"
+</code></p>
+
+<p>Without an explicit receiver or arguments, Ruby will always attempt to dereference the local variable if it is in scope.</p>
+
+<p><code>ruby
+foo # =&gt; nil
+self.foo # =&gt; "foo"
+foo() # =&gt; "foo"
+</code></p>
+
+<p>To avoid this problem in practice, you should avoid shadowing method names with local variables in all but the simplest of cases. We actually had this guideline in our <a href="http://sportngin.github.io/styleguide/ruby.html#syntax_L20">styleguide</a>.</p>
+
+<p><img src="http://aiminglow.com/wp-content/uploads/2011/06/peter-pan.jpg" alt="" /></p>
+
+<p>When writing or reviewing code, be on the lookout for shadows. You never know when they&rsquo;ll sneak up on you.</p>
+]]></content>
+  </entry>
+  
+</feed>
